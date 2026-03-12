@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vivek & Pragya — Shaadi 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Niconne&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #c9a96e;
+    --gold-light: #e8d5a3;
+    --gold-dark: #a07840;
+    --rose: #c97b8a;
+    --rose-light: #f2d9df;
+    --rose-dark: #9e4f62;
+    --cream: #fdf8f0;
+    --cream-dark: #f5ece0;
+    --text-dark: #2c1f14;
+    --text-mid: #5a3e2b;
+    --text-light: #8c6a4f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    font-family: 'EB Garamond', Georgia, serif;
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── Decorative background pattern ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(201,169,110,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(201,123,138,0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrap {
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 24px;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .divider-diamond {
+    width: 7px; height: 7px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ════════════════════════════════
+     HERO SECTION
+  ════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(160deg, #f9f0e8 0%, #fdf5ee 40%, #f7eae8 100%);
+    z-index: 0;
+  }
+
+  /* Corner ornaments */
+  .corner {
+    position: absolute;
+    width: 90px; height: 90px;
+    z-index: 1;
+    opacity: 0.45;
+  }
+  .corner svg { width: 100%; height: 100%; }
+  .corner-tl { top: 16px; left: 16px; }
+  .corner-tr { top: 16px; right: 16px; transform: scaleX(-1); }
+  .corner-bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
+  .corner-br { bottom: 16px; right: 16px; transform: scale(-1); }
+
+  .hero-content { position: relative; z-index: 2; }
+
+  .hero-om {
+    font-size: 2rem;
+    color: var(--gold-dark);
+    margin-bottom: 6px;
+    letter-spacing: 2px;
+    animation: fadeDown 1s ease both;
+  }
+
+  .hero-blessing {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    animation: fadeDown 1s 0.1s ease both;
+  }
+
+  .hero-invite-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    animation: fadeDown 1s 0.2s ease both;
+  }
+
+  .hero-names {
+    animation: fadeDown 1s 0.3s ease both;
+    margin-bottom: 8px;
+  }
+
+  .hero-name-main {
+    font-family: 'Niconne', cursive;
+    font-size: clamp(4rem, 14vw, 5.5rem);
+    color: var(--text-dark);
+    line-height: 1;
+    display: block;
+  }
+
+  .hero-ampersand {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--gold);
+    display: block;
+    margin: 4px 0;
+    letter-spacing: 2px;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin-top: 24px;
+    margin-bottom: 32px;
+    animation: fadeDown 1s 0.4s ease both;
+  }
+
+  /* Date pills */
+  .hero-dates {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    animation: fadeDown 1s 0.5s ease both;
+    margin-bottom: 8px;
+  }
+
+  .date-pill {
+    background: var(--gold);
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    padding: 8px 20px;
+    position: relative;
+  }
+  .date-pill:first-child {
+    border-radius: 30px 0 0 30px;
+    background: var(--gold-dark);
+  }
+  .date-pill:last-child {
+    border-radius: 0 30px 30px 0;
+    background: var(--gold);
+  }
+  .date-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    letter-spacing: 4px;
+    margin-top: 8px;
+    animation: fadeDown 1s 0.55s ease both;
+  }
+
+  /* ════════════════════════════════
+     SECTION CARD
+  ════════════════════════════════ */
+  .section-card {
+    margin: 0 16px 0px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 24px rgba(44,31,20,0.06);
+    overflow: hidden;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .section-header {
+    padding: 32px 28px 0;
+    text-align: center;
+  }
+
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.6rem;
+    color: var(--text-dark);
+    line-height: 1.2;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--rose-dark);
+  }
+
+  .section-body {
+    padding: 20px 28px 32px;
+  }
+
+  /* ════════════════════════════════
+     BLESSINGS / IN MEMORY
+  ════════════════════════════════ */
+  .memory-section {
+    margin: 0 16px 0px;
+    background: linear-gradient(135deg, #fdf5ee 0%, #f9eef4 100%);
+    border-radius: 4px;
+    padding: 36px 28px;
+    text-align: center;
+    box-shadow: 0 2px 24px rgba(44,31,20,0.06);
+    animation: fadeUp 0.8s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .memory-section::before {
+    content: '✦';
+    position: absolute;
+    font-size: 8rem;
+    color: rgba(201,169,110,0.06);
+    top: -20px; right: -10px;
+    pointer-events: none;
+  }
+
+  .memory-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .memory-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .memory-names {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .memory-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.3;
+  }
+
+  .memory-name span {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 2px;
+  }
+
+  .memory-footer {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* ════════════════════════════════
+     COUPLE SECTION
+  ════════════════════════════════ */
+  .couple-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 8px 0;
+  }
+
+  .person-block { text-align: center; }
+
+  .person-role {
+    font-size: 0.68rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .person-name {
+    font-family: 'Niconne', cursive;
+    font-size: 2.6rem;
+    color: var(--text-dark);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .person-parents {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  .person-parents strong { color: var(--text-mid); font-weight: 500; }
+
+  .couple-and {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--gold);
+    text-align: center;
+  }
+
+  /* ════════════════════════════════
+     EVENTS
+  ════════════════════════════════ */
+  .events-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-light);
+    text-align: center;
+    padding: 0 28px;
+    margin-bottom: 4px;
+  }
+
+  .events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .event-item {
+    display: grid;
+    grid-template-columns: 4px 1fr;
+    gap: 0 18px;
+    padding: 22px 28px;
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+    position: relative;
+    transition: background 0.2s;
+  }
+  .event-item:last-child { border-bottom: none; }
+  .event-item:hover { background: rgba(201,169,110,0.04); }
+
+  .event-accent {
+    width: 4px;
+    border-radius: 4px;
+    background: linear-gradient(to bottom, var(--gold), var(--rose));
+    align-self: stretch;
+  }
+
+  .event-content {}
+
+  .event-day-badge {
+    display: inline-block;
+    font-size: 0.62rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--gold-dark);
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin-bottom: 8px;
+  }
+  .event-day-badge.tuesday { background: var(--rose-dark); }
+
+  .event-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+  }
+
+  .event-time {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 1px;
+  }
+
+  .event-date {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    font-style: italic;
+  }
+
+  /* ════════════════════════════════
+     FAMILY NOTE
+  ════════════════════════════════ */
+  .family-note {
+    margin: 0 16px 0px;
+    background: #fff;
+    border-radius: 4px;
+    padding: 32px 28px;
+    box-shadow: 0 2px 24px rgba(44,31,20,0.06);
+    text-align: center;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .family-note .section-label { margin-bottom: 16px; }
+
+  .family-members {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .family-member {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+
+  .family-member-dot {
+    width: 5px; height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .family-member-role {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-right: 4px;
+  }
+
+  /* ════════════════════════════════
+     WARDROBE
+  ════════════════════════════════ */
+  .wardrobe-days {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .wardrobe-day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .wardrobe-day-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold-light), transparent);
+  }
+
+  .wardrobe-event-name {
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+    margin-top: 12px;
+  }
+
+  .wardrobe-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .wardrobe-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .wardrobe-tag {
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1px solid var(--gold-light);
+    color: var(--text-light);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  /* ════════════════════════════════
+     FOOTER
+  ════════════════════════════════ */
+  .footer {
+    text-align: center;
+    padding: 48px 32px 64px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .footer-names {
+    font-family: 'Niconne', cursive;
+    font-size: 2.8rem;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .footer-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .footer-note {
+    margin-top: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* spacing helper */
+  .gap { height: 16px; }
+  .gap-lg { height: 28px; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <!-- Corner ornaments -->
+    <div class="corner corner-tl">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4 L4 40 Q4 4 40 4 Z" stroke="#c9a96e" stroke-width="1" fill="none"/>
+        <path d="M4 4 L76 4" stroke="#c9a96e" stroke-width="0.8" fill="none"/>
+        <path d="M4 4 L4 76" stroke="#c9a96e" stroke-width="0.8" fill="none"/>
+        <circle cx="4" cy="4" r="3" fill="#c9a96e"/>
+        <path d="M14 4 Q14 14 4 14" stroke="#c9a96e" stroke-width="0.6" fill="none"/>
+        <path d="M24 4 Q24 24 4 24" stroke="#c9a96e" stroke-width="0.4" fill="none"/>
+        <path d="M44 4 Q44 44 4 44" stroke="#c9a96e" stroke-width="0.3" fill="none"/>
+        <circle cx="40" cy="4" r="1.5" fill="#c9a96e" opacity="0.6"/>
+        <circle cx="4" cy="40" r="1.5" fill="#c9a96e" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="corner corner-tr">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4 L4 40 Q4 4 40 4 Z" stroke="#c9a96e" stroke-width="1" fill="none"/>
+        <path d="M4 4 L76 4" stroke="#c9a96e" stroke-width="0.8" fill="none"/>
+        <path d="M4 4 L4 76" stroke="#c9a96e" stroke-width="0.8" fill="none"/>
+        <circle cx="4" cy="4" r="3" fill="#c9a96e"/>
+        <path d="M14 4 Q14 14 4 14" stroke="#c9a96e" stroke-width="0.6" fill="none"/>
+        <path d="M24 4 Q24 24 4 24" stroke="#c9a96e" stroke-width="0.4" fill="none"/>
+        <path d="M44 4 Q44 44 4 44" stroke="#c9a96e" stroke-width="0.3" fill="none"/>
+        <circle cx="40" cy="4" r="1.5" fill="#c9a96e" opacity="0.6"/>
+        <circle cx="4" cy="40" r="1.5" fill="#c9a96e" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="corner corner-bl">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4 L4 40 Q4 4 40 4 Z" stroke="#c9a96e" stroke-width="1" fill="none"/>
+        <path d="M4 4 L76 4" stroke="#c9a96e" stroke-width="0.8" fill="none"/>
+        <path d="M4 4 L4 76" stroke="#c9a96e" stroke-width="0.8" fill="none"/>
+        <circle cx="4" cy="4" r="3" fill="#c9a96e"/>
+        <path d="M14 4 Q14 14 4 14" stroke="#c9a96e" stroke-width="0.6" fill="none"/>
+        <path d="M24 4 Q24 24 4 24" stroke="#c9a96e" stroke-width="0.4" fill="none"/>
+        <path d="M44 4 Q44 44 4 44" stroke="#c9a96e" stroke-width="0.3" fill="none"/>
+        <circle cx="40" cy="4" r="1.5" fill="#c9a96e" opacity="0.6"/>
+        <circle cx="4" cy="40" r="1.5" fill="#c9a96e" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="corner corner-br">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4 L4 40 Q4 4 40 4 Z" stroke="#c9a96e" stroke-width="1" fill="none"/>
+        <path d="M4 4 L76 4" stroke="#c9a96e" stroke-width="0.8" fill="none"/>
+        <path d="M4 4 L4 76" stroke="#c9a96e" stroke-width="0.8" fill="none"/>
+        <circle cx="4" cy="4" r="3" fill="#c9a96e"/>
+        <path d="M14 4 Q14 14 4 14" stroke="#c9a96e" stroke-width="0.6" fill="none"/>
+        <path d="M24 4 Q24 24 4 24" stroke="#c9a96e" stroke-width="0.4" fill="none"/>
+        <path d="M44 4 Q44 44 4 44" stroke="#c9a96e" stroke-width="0.3" fill="none"/>
+        <circle cx="40" cy="4" r="1.5" fill="#c9a96e" opacity="0.6"/>
+        <circle cx="4" cy="40" r="1.5" fill="#c9a96e" opacity="0.6"/>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-om">ॐ</div>
+      <div class="hero-blessing">Shri Ganeshaya Namah</div>
+      <div class="hero-invite-text">You're warmly invited to</div>
+      <div class="hero-names">
+        <span class="hero-name-main">Vivek</span>
+        <span class="hero-ampersand">&amp;</span>
+        <span class="hero-name-main">Pragya</span>
+      </div>
+      <div class="hero-tagline">Two hearts, one beautiful beginning 🌿</div>
+      <div class="hero-dates">
+        <div class="date-pill">April 20</div>
+        <div class="date-pill">April 21</div>
+      </div>
+      <div class="date-year">2026</div>
+    </div>
+  </section>
+
+  <div class="gap-lg"></div>
+
+  <!-- ══ BLESSINGS / IN MEMORY ══ -->
+  <div class="memory-section">
+    <div class="memory-eyebrow">Starting with their blessings</div>
+    <p class="memory-intro">
+      In loving memory of those whose blessings guide every step of this journey.
+    </p>
+    <div class="memory-names">
+      <div class="memory-name">
+        <span>Baba</span>
+        Late Shri Johrilal Sharma
+      </div>
+      <div style="color: var(--gold); font-size:1.2rem; text-align:center;">✦</div>
+      <div class="memory-name">
+        <span>Dadi</span>
+        Late Smt. Mayadevi Sharma
+      </div>
+    </div>
+    <p class="memory-footer">
+      With their love guiding every step, the Sharma family joyfully welcomes you to be part of this beautiful celebration.
+    </p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+  <!-- ══ THE COUPLE ══ -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-label">Meet the Couple</div>
+      <div class="section-title">The two <em>of them</em></div>
+    </div>
+    <div class="section-body">
+      <div class="couple-grid">
+        <div class="person-block">
+          <div class="person-role">The Groom</div>
+          <div class="person-name">Vivek</div>
+          <div class="person-parents">Son of<br/><strong>Mrs. Ila &<br/>Mr. Yogesh Gajjar</strong></div>
+        </div>
+        <div class="couple-and">&amp;</div>
+        <div class="person-block">
+          <div class="person-role">The Bride</div>
+          <div class="person-name">Pragya</div>
+          <div class="person-parents">Daughter of<br/><strong>Mrs. Padma &<br/>Mr. Dharmendra Sharma</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+  <!-- ══ EVENTS ══ -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-label">Celebrations</div>
+      <div class="section-title">Join us for every <em>moment</em></div>
+    </div>
+    <div class="gap"></div>
+    <div class="events-list">
+
+      <!-- Haldi -->
+      <div class="event-item">
+        <div class="event-accent"></div>
+        <div class="event-content">
+          <div class="event-day-badge">Monday · April 20</div>
+          <div class="event-name">Haldi</div>
+          <div class="event-time">10 am onwards</div>
+          <div class="event-date">Monday, April 20, 2026</div>
+        </div>
+      </div>
+
+      <!-- Sangeet -->
+      <div class="event-item">
+        <div class="event-accent"></div>
+        <div class="event-content">
+          <div class="event-day-badge">Monday · April 20</div>
+          <div class="event-name">Sangeet</div>
+          <div class="event-time">8 pm onwards</div>
+          <div class="event-date">Monday, April 20, 2026</div>
+        </div>
+      </div>
+
+      <!-- Chaak Bhaat -->
+      <div class="event-item">
+        <div class="event-accent"></div>
+        <div class="event-content">
+          <div class="event-day-badge tuesday">Tuesday · April 21</div>
+          <div class="event-name">Chaak Bhaat</div>
+          <div class="event-time">9 am onwards</div>
+          <div class="event-date">Tuesday, April 21, 2026</div>
+        </div>
+      </div>
+
+      <!-- Wedding -->
+      <div class="event-item">
+        <div class="event-accent"></div>
+        <div class="event-content">
+          <div class="event-day-badge tuesday">Tuesday · April 21</div>
+          <div class="event-name">Wedding</div>
+          <div class="event-time">6 pm onwards</div>
+          <div class="event-date">Tuesday, April 21, 2026</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+  <!-- ══ WARDROBE ══ -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-label">Wedding Wardrobe Guide</div>
+      <div class="section-title">Dress the <em>part</em></div>
+    </div>
+    <div class="section-body">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:var(--text-light);text-align:center;margin-bottom:20px;">
+        Here's what we're wearing for each celebration — get creative and make it your own! 🌿
+      </p>
+      <div class="wardrobe-days">
+        <div>
+          <div class="wardrobe-day-title">Monday, 20th April</div>
+          <div class="wardrobe-event-name">Haldi</div>
+          <div class="wardrobe-desc">Draped in Traditionals</div>
+          <div class="wardrobe-tags">
+            <span class="wardrobe-tag">Sarees</span>
+            <span class="wardrobe-tag">Suits</span>
+            <span class="wardrobe-tag">Kurta-Pyjamas</span>
+          </div>
+          <div class="wardrobe-event-name" style="margin-top:16px;">Sangeet</div>
+          <div class="wardrobe-desc">Glam it up for the night</div>
+          <div class="wardrobe-tags">
+            <span class="wardrobe-tag">Lehengas</span>
+            <span class="wardrobe-tag">Gowns</span>
+            <span class="wardrobe-tag">Sherwanis</span>
+            <span class="wardrobe-tag">Suits</span>
+          </div>
+        </div>
+        <div>
+          <div class="wardrobe-day-title">Tuesday, 21st April</div>
+          <div class="wardrobe-event-name">Chaak Bhaat</div>
+          <div class="wardrobe-desc">Bright & festive morning wear</div>
+          <div class="wardrobe-tags">
+            <span class="wardrobe-tag">Sarees</span>
+            <span class="wardrobe-tag">Suits</span>
+            <span class="wardrobe-tag">Kurtas</span>
+          </div>
+          <div class="wardrobe-event-name" style="margin-top:16px;">Wedding</div>
+          <div class="wardrobe-desc">Your finest traditional wear</div>
+          <div class="wardrobe-tags">
+            <span class="wardrobe-tag">Lehengas</span>
+            <span class="wardrobe-tag">Sarees</span>
+            <span class="wardrobe-tag">Sherwanis</span>
+            <span class="wardrobe-tag">Bandhgala</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+  <!-- ══ FAMILY NOTE ══ -->
+  <div class="family-note">
+    <div class="section-label">With Love From</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.98rem;color:var(--text-light);line-height:1.7;margin-bottom:4px;">
+      This celebration would not be complete without the warmth of family. A special note of love from the bride's side:
+    </p>
+    <div class="family-members">
+      <div class="family-member">
+        <div class="family-member-dot"></div>
+        <div>
+          <span class="family-member-role">Sister — </span>
+          <strong>Shaifali Gaur</strong>
+        </div>
+      </div>
+      <div class="family-member">
+        <div class="family-member-dot"></div>
+        <div>
+          <span class="family-member-role">Brother-in-law — </span>
+          <strong>Shubham Gaur</strong>
+        </div>
+      </div>
+      <div class="family-member">
+        <div class="family-member-dot"></div>
+        <div>
+          <span class="family-member-role">Niece — </span>
+          <strong>Amaira Gaur</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gap-lg"></div>
+
+  <!-- ══ FOOTER ══ -->
+  <div class="footer">
+    <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+    <div class="gap-lg"></div>
+    <div class="footer-names">Vivek &amp; Pragya</div>
+    <div class="footer-year">Shaadi · 2026</div>
+    <p class="footer-note">
+      We look forward to celebrating with you.<br/>
+      With love &amp; blessings, the Sharma Family 🌸
+    </p>
+    <div class="gap-lg"></div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+  </div>
+
+</div>
+</body>
+</html>
